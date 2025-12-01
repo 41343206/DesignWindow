@@ -45,8 +45,25 @@
     <addaction name="actionCopy"/>
     <addaction name="actionAll"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>檢視(&amp;V)</string>
+    </property>
+    <widget class="QMenu" name="menuZoom">
+     <property name="title">
+      <string>縮放</string>
+     </property>
+     <addaction name="actionZoomIn"/>
+     <addaction name="actionZoomOut"/>
+     <addaction name="actionZoomReset"/>
+    </widget>
+    <addaction name="menuZoom"/>
+    <addaction name="separator"/>
+    <addaction name="actionToggleStatusBar"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_E"/>
+   <addaction name="menuView"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="filetoolBar">
@@ -78,6 +95,21 @@
    <addaction name="actionCut"/>
    <addaction name="actionCopy"/>
    <addaction name="actionPaste"/>
+  </widget>
+  <widget class="QToolBar" name="viewToolBar">
+   <property name="windowTitle">
+    <string>檢視工具列</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionZoomIn"/>
+   <addaction name="actionZoomOut"/>
+   <addaction name="actionZoomReset"/>
+   <addaction name="actionToggleStatusBar"/>
   </widget>
   <action name="actionNew">
    <property name="text">
@@ -159,6 +191,41 @@
    </property>
    <property name="menuRole">
     <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionZoomIn">
+   <property name="text">
+    <string>放大(&amp;I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actionZoomOut">
+   <property name="text">
+    <string>縮小(&amp;O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionZoomReset">
+   <property name="text">
+    <string>還原預設縮放(&amp;R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
+   </property>
+  </action>
+  <action name="actionToggleStatusBar">
+   <property name="text">
+    <string>狀態列(&amp;S)</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

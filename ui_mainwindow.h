@@ -35,13 +35,20 @@ public:
     QAction *actionCopy;
     QAction *actionAll;
     QAction *actionPaste;
+    QAction *actionZoomIn;
+    QAction *actionZoomOut;
+    QAction *actionZoomReset;
+    QAction *actionToggleStatusBar;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_E;
+    QMenu *menuView;
+    QMenu *menuZoom;
     QStatusBar *statusbar;
     QToolBar *filetoolBar;
     QToolBar *toolBar;
+    QToolBar *viewToolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -71,6 +78,16 @@ public:
         actionPaste = new QAction(MainWindow);
         actionPaste->setObjectName("actionPaste");
         actionPaste->setMenuRole(QAction::MenuRole::NoRole);
+        actionZoomIn = new QAction(MainWindow);
+        actionZoomIn->setObjectName("actionZoomIn");
+        actionZoomOut = new QAction(MainWindow);
+        actionZoomOut->setObjectName("actionZoomOut");
+        actionZoomReset = new QAction(MainWindow);
+        actionZoomReset->setObjectName("actionZoomReset");
+        actionToggleStatusBar = new QAction(MainWindow);
+        actionToggleStatusBar->setObjectName("actionToggleStatusBar");
+        actionToggleStatusBar->setCheckable(true);
+        actionToggleStatusBar->setChecked(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         MainWindow->setCentralWidget(centralwidget);
@@ -81,6 +98,10 @@ public:
         menu->setObjectName("menu");
         menu_E = new QMenu(menubar);
         menu_E->setObjectName("menu_E");
+        menuView = new QMenu(menubar);
+        menuView->setObjectName("menuView");
+        menuZoom = new QMenu(menuView);
+        menuZoom->setObjectName("menuZoom");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -91,9 +112,13 @@ public:
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName("toolBar");
         MainWindow->addToolBar(Qt::ToolBarArea::TopToolBarArea, toolBar);
+        viewToolBar = new QToolBar(MainWindow);
+        viewToolBar->setObjectName("viewToolBar");
+        MainWindow->addToolBar(Qt::ToolBarArea::TopToolBarArea, viewToolBar);
 
         menubar->addAction(menu->menuAction());
         menubar->addAction(menu_E->menuAction());
+        menubar->addAction(menuView->menuAction());
         menu->addAction(actionNew);
         menu->addAction(actionOpen);
         menu->addAction(actionClose);
@@ -106,6 +131,12 @@ public:
         menu_E->addAction(actionCut);
         menu_E->addAction(actionCopy);
         menu_E->addAction(actionAll);
+        menuView->addAction(menuZoom->menuAction());
+        menuView->addSeparator();
+        menuView->addAction(actionToggleStatusBar);
+        menuZoom->addAction(actionZoomIn);
+        menuZoom->addAction(actionZoomOut);
+        menuZoom->addAction(actionZoomReset);
         filetoolBar->addAction(actionNew);
         filetoolBar->addAction(actionOpen);
         filetoolBar->addAction(actionSave);
@@ -114,6 +145,10 @@ public:
         toolBar->addAction(actionCut);
         toolBar->addAction(actionCopy);
         toolBar->addAction(actionPaste);
+        viewToolBar->addAction(actionZoomIn);
+        viewToolBar->addAction(actionZoomOut);
+        viewToolBar->addAction(actionZoomReset);
+        viewToolBar->addAction(actionToggleStatusBar);
 
         retranslateUi(MainWindow);
 
@@ -158,10 +193,26 @@ public:
 #if QT_CONFIG(shortcut)
         actionPaste->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+V", nullptr));
 #endif // QT_CONFIG(shortcut)
+        actionZoomIn->setText(QCoreApplication::translate("MainWindow", "\346\224\276\345\244\247(&I)", nullptr));
+#if QT_CONFIG(shortcut)
+        actionZoomIn->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl++", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionZoomOut->setText(QCoreApplication::translate("MainWindow", "\347\270\256\345\260\217(&O)", nullptr));
+#if QT_CONFIG(shortcut)
+        actionZoomOut->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+-", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionZoomReset->setText(QCoreApplication::translate("MainWindow", "\351\202\204\345\216\237\351\240\220\350\250\255\347\270\256\346\224\276(&R)", nullptr));
+#if QT_CONFIG(shortcut)
+        actionZoomReset->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+0", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionToggleStatusBar->setText(QCoreApplication::translate("MainWindow", "\347\213\200\346\205\213\345\210\227(&S)", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\346\252\224\346\241\210(&E)", nullptr));
         menu_E->setTitle(QCoreApplication::translate("MainWindow", "\347\267\250\350\274\257(&E)", nullptr));
+        menuView->setTitle(QCoreApplication::translate("MainWindow", "\346\252\242\350\246\226(&V)", nullptr));
+        menuZoom->setTitle(QCoreApplication::translate("MainWindow", "\347\270\256\346\224\276", nullptr));
         filetoolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
+        viewToolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "\346\252\242\350\246\226\345\267\245\345\205\267\345\210\227", nullptr));
     } // retranslateUi
 
 };
