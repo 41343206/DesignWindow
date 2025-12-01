@@ -39,3 +39,10 @@
 
 # debug information files
 *.dwo
+
+# Qt build artifacts (Linux/macOS builds)
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+qrc_*.cpp
+DesignWindow
