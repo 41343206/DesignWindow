@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QFile>
+#include <QIODevice>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
