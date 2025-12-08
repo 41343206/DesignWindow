@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ui_mainwindow.h"
 
-class MainWindow : public QMainWindow,  Ui_MainWindow
+namespace Ui {
+class MainWindow;
+}
+
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -13,10 +16,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionSave_clicked();
-    void on_actionOpen_clicked();
+    void on_actionSave_triggered();
 
 private:
+    Ui::MainWindow *ui;
     QString currentFilePath;
 };
 #endif // MAINWINDOW_H
