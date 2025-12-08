@@ -14,6 +14,42 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {}
 
+void MainWindow::on_actionOpen_clicked()
+{
+    // Prompt user to select file to open
+    QString filePath = QFileDialog::getOpenFileName(this,
+        tr("開啟檔案"),
+        "",
+        tr("文字檔案 (*.txt);;所有檔案 (*.*)"));
+    
+    // User cancelled the dialog
+    if (filePath.isEmpty()) {
+        return;
+    }
+    
+    // Open and read the file
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("開啟檔案"),
+            tr("無法開啟檔案 %1:\n%2")
+            .arg(filePath)
+            .arg(file.errorString()));
+        return;
+    }
+    
+    QTextStream in(&file);
+    in.setEncoding(QStringConverter::Utf8);
+    QString content = in.readAll();
+    file.close();
+    
+    // Set the content to textEdit and update current file path
+    textEdit->setPlainText(content);
+    currentFilePath = filePath;
+    
+    // Show success message in status bar
+    statusbar->showMessage(tr("檔案已開啟: %1").arg(currentFilePath), 3000);
+}
+
 void MainWindow::on_actionSave_clicked()
 {
     // If no current file path, prompt user to select save location

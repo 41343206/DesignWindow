@@ -14,6 +14,7 @@ public:
 
 private slots:
     void on_actionSave_clicked();
+    void on_actionOpen_clicked();
 
 private:
     QString currentFilePath;
