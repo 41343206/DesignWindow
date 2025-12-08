@@ -40,6 +40,7 @@ void MainWindow::on_actionSave_clicked()
     }
     
     QTextStream out(&file);
+    out.setEncoding(QStringConverter::Utf8);
     out << textEdit->toPlainText();
     file.close();
     
