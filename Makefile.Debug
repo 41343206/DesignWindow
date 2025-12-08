@@ -103,7 +103,17 @@ compiler_rcc_make_all: debug/qrc_designwindow.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_designwindow.cpp
 debug/qrc_designwindow.cpp: images/designwindow.qrc \
-		C:/Qt/6.9.1/mingw_64/bin/rcc.exe
+		C:/Qt/6.9.1/mingw_64/bin/rcc.exe \
+		images/new.png \
+		images/asave.png \
+		images/save.png \
+		images/open.png \
+		images/find.png \
+		images/undo.png \
+		images/copy.png \
+		images/editor.png \
+		images/paste.png \
+		images/cut.png
 	C:\Qt\6.9.1\mingw_64\bin\rcc.exe -name designwindow --no-zstd images\designwindow.qrc -o debug\qrc_designwindow.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h

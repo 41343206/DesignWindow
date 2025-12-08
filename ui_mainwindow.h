@@ -16,6 +16,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -40,6 +41,7 @@ public:
     QAction *actionZoomReset;
     QAction *actionToggleStatusBar;
     QWidget *centralwidget;
+    QTextEdit *textEdit;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_E;
@@ -57,26 +59,50 @@ public:
         MainWindow->resize(800, 600);
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName("actionNew");
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/new.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionNew->setIcon(icon);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName("actionOpen");
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/images/open.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionOpen->setIcon(icon1);
         actionClose = new QAction(MainWindow);
         actionClose->setObjectName("actionClose");
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName("actionSave");
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/save.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionSave->setIcon(icon2);
         actionASave = new QAction(MainWindow);
         actionASave->setObjectName("actionASave");
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/images/asave.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionASave->setIcon(icon3);
         actionQuit = new QAction(MainWindow);
         actionQuit->setObjectName("actionQuit");
         actionUndo = new QAction(MainWindow);
         actionUndo->setObjectName("actionUndo");
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/images/undo.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionUndo->setIcon(icon4);
         actionCut = new QAction(MainWindow);
         actionCut->setObjectName("actionCut");
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/images/cut.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionCut->setIcon(icon5);
         actionCopy = new QAction(MainWindow);
         actionCopy->setObjectName("actionCopy");
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/images/copy.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionCopy->setIcon(icon6);
         actionAll = new QAction(MainWindow);
         actionAll->setObjectName("actionAll");
         actionPaste = new QAction(MainWindow);
         actionPaste->setObjectName("actionPaste");
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/images/paste.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionPaste->setIcon(icon7);
         actionPaste->setMenuRole(QAction::MenuRole::NoRole);
         actionZoomIn = new QAction(MainWindow);
         actionZoomIn->setObjectName("actionZoomIn");
@@ -90,6 +116,9 @@ public:
         actionToggleStatusBar->setChecked(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        textEdit = new QTextEdit(centralwidget);
+        textEdit->setObjectName("textEdit");
+        textEdit->setGeometry(QRect(20, 10, 761, 511));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
