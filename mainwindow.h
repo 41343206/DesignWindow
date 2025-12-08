@@ -11,5 +11,11 @@ class MainWindow : public QMainWindow,  Ui_MainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_actionSave_clicked();
+
+private:
+    QString currentFilePath;
 };
 #endif // MAINWINDOW_H
