@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QIODevice>
+#include <QStringConverter>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
